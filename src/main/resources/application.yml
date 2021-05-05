@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: administrative-debt
+  profiles:
+    active: dev
+
+server:
+  port: 8089
+  servlet:
+    context-path: /api

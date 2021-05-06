@@ -5,6 +5,8 @@ import com.administrative.debt.application.CreateDebtHandler;
 import com.administrative.debt.application.DeleteDebtHandler;
 import com.administrative.debt.application.UpdateDebtHandler;
 import com.administrative.debt.domain.model.Debt;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import java.time.LocalDate;
 import javax.validation.Valid;
 import javax.validation.constraints.Future;
@@ -33,6 +35,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 @RestController
 @RequestMapping(path = "/v1/private/debt")
+@Tag(name = "Administrative", description = "Debt administration")
 @Validated
 public class DebtController {
 
@@ -43,6 +46,7 @@ public class DebtController {
 
   @GetMapping(path = "/{id-client}")
   @PreAuthorize("hasAuthority('debt:read')")
+  @Operation(summary = "Find Debt Information by client id", description = "Debt search by %idClient%", tags = { "debt" })
   public Debt getDebt(@PathVariable(value = "id-client") @Size(max = 15) String idClient) {
     log.info("[Start][idClient:{}]", idClient);
     Debt debt = this.consultDebtHandler.execute(idClient);
@@ -53,6 +57,7 @@ public class DebtController {
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
   @PreAuthorize("hasAuthority('debt:create')")
+  @Operation(summary = "Create Debt Information", description = "Debt creation", tags = { "debt" })
   public void createDebt(@Valid @RequestBody Debt debt) {
     log.info("[Start][idClient:{}]", debt.getIdClient());
     this.createDebtHandler.execute(debt);
@@ -62,6 +67,7 @@ public class DebtController {
   @PutMapping(path = "/{id-client}")
   @ResponseStatus(HttpStatus.CREATED)
   @PreAuthorize("hasAuthority('debt:update')")
+  @Operation(summary = "Update Debt Information", description = "Debt update by %idClient%", tags = { "debt" })
   public void updateDebt(
       @PathVariable(value = "id-client") @Size(max = 15) String idClient,
       @RequestParam(value = "due-debt") @Future @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate dueDate,
@@ -75,6 +81,7 @@ public class DebtController {
   @DeleteMapping(path = "/{id-client}")
   @ResponseStatus(HttpStatus.ACCEPTED)
   @PreAuthorize("hasAuthority('debt:delete')")
+  @Operation(summary = "Delete Debt", description = "Debt delete by %idClient%", tags = { "debt" })
   public void deleteDebt(@PathVariable(value = "id-client") @Size(max = 15) String idClient) {
     log.info("[Start][idClient:{}]", idClient);
     this.deleteDebtHandler.execute(idClient);

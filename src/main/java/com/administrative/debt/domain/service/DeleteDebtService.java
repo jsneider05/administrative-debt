@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class DeleteDebtService {
 
-  public static final String NO_EXISTS_A_DEBT_BY_ID_CLIENT = "Doesn't exists a debt by idClient %s";
+  private static final String NO_EXISTS_A_DEBT_BY_ID_CLIENT = "Doesn't exists a debt by idClient %s";
 
   private final DebtDao dao;
   private final DebtRepository repository;

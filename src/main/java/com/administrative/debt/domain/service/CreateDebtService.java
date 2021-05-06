@@ -13,9 +13,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class CreateDebtService {
 
-  public static final String EXISTS_A_DEBT_BY_ID_CLIENT = "Exists a debt by idClient %s";
-  public static final String EXISTS_A_CLIENT_BY_EMAIL = "Exists a client by email %s";
-  public static final String EXISTS_A_DEBT_BY_ID_DEBT = "Exists a debt by idDebt %s";
+  private static final String EXISTS_A_DEBT_BY_ID_CLIENT = "Exists a debt by idClient %s";
+  private static final String EXISTS_A_CLIENT_BY_EMAIL = "Exists a client by email %s";
+  private static final String EXISTS_A_DEBT_BY_ID_DEBT = "Exists a debt by idDebt %s";
 
   private final DebtDao dao;
   private final DebtRepository repository;

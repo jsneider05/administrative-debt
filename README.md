@@ -58,3 +58,9 @@ mvn spring-boot:run
 |Proyecto|URL|
 |--------|---|
 |Debt|[http://localhost:8089/api/swagger-ui.html](http://localhost:8089/api/swagger-ui.html)|
+
+## Diagrams Architecture
+
+![img.png](src/main/resources/diagrams/diagram-architecture-backend.png)
+
+![img_1.png](src/main/resources/diagrams/architecture-hexagonal.png)

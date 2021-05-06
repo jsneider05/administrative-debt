@@ -3,7 +3,7 @@ package com.administrative.debt.domain.model;
 import java.time.LocalDate;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,13 +29,13 @@ public class Debt {
   @Size(max = 60)
   private String email;
 
+  @Positive
   private Long amount;
 
   @NotBlank
   @Size(max = 15)
   private String idDebt;
 
-  @PastOrPresent
   @DateTimeFormat(pattern = "dd-MM-yyyy")
   private LocalDate dueDate;
 

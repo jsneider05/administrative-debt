@@ -2,7 +2,7 @@ package com.administrative.debt.infrastructure.adapter.dao;
 
 import com.administrative.debt.domain.exception.NoDataException;
 import com.administrative.debt.domain.model.Debt;
-import com.administrative.debt.domain.port.DebtDao;
+import com.administrative.debt.domain.port.dao.DebtDao;
 import com.administrative.debt.infrastructure.adapter.DebtJpaRepository;
 import com.administrative.debt.infrastructure.adapter.mapper.DebtMapper;
 import lombok.RequiredArgsConstructor;
@@ -33,4 +33,29 @@ public class DebtDaoH2 implements DebtDao {
     log.info("[End][idClient:{}]", idClient);
     return debt;
   }
+
+  @Override
+  public Boolean existsByIdClient(String idClient) {
+    log.info("[Start][idClient:{}]", idClient);
+    Boolean exist = this.jpaRepository.existsByIdClient(idClient);
+    log.info("[End][idClient:{}]", idClient);
+    return exist;
+  }
+
+  @Override
+  public Boolean existsByEmail(String email) {
+    log.info("[Start][email:{}]", email);
+    Boolean exist = this.jpaRepository.existsByEmail(email);
+    log.info("[End][email:{}]", email);
+    return exist;
+  }
+
+  @Override
+  public Boolean existsByIdDebt(String idDebt) {
+    log.info("[Start][idDebt:{}]", idDebt);
+    Boolean exist = this.jpaRepository.existsByIdDebt(idDebt);
+    log.info("[End][idDebt:{}]", idDebt);
+    return exist;
+  }
+
 }

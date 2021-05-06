@@ -1,23 +1,23 @@
 package com.administrative.debt.application;
 
-import com.administrative.debt.domain.model.Debt;
-import com.administrative.debt.domain.port.dao.DebtDao;
+import com.administrative.debt.domain.service.DeleteDebtService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @RequiredArgsConstructor
 @Component
-public class ConsultDebtHandler {
+public class DeleteDebtHandler {
 
-  private final DebtDao dao;
+  private final DeleteDebtService service;
 
-  public Debt execute(String idClient) {
+  @Transactional
+  public void execute(String idClient) {
     log.info("[Start][idClient:{}]", idClient);
-    Debt debt = this.dao.getByIdClient(idClient);
+    this.service.execute(idClient);
     log.info("[End][idClient:{}]", idClient);
-    return debt;
   }
 
 }

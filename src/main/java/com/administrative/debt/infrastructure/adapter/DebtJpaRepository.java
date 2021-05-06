@@ -5,4 +5,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface DebtJpaRepository extends JpaRepository<DebtEntity, String> {
 
+  Boolean existsByIdClient(String idClient);
+
+  Boolean existsByEmail(String email);
+
+  Boolean existsByIdDebt(String idDebt);
+
 }

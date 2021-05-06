@@ -1,0 +1,180 @@
+{
+	"info": {
+		"_postman_id": "02f8aabb-54ff-462c-bc34-335d6fcd864a",
+		"name": "ADMIN-DEBT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get debt",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token-client}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/{{api-version}}/private/debt/145657876-1",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{{api-version}}",
+						"private",
+						"debt",
+						"145657876-1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create debt",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token-client}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idClient\": \"145657876-1\",\r\n    \"clientName\": \"juan perez saez\",\r\n    \"email\": \"juan1.perez@gmail.com\",\r\n    \"amount\": 19000,\r\n    \"idDebt\": \"zbc1231\",\r\n    \"dueDate\": \"12-03-2021\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/{{api-version}}/private/debt",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{{api-version}}",
+						"private",
+						"debt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update debt",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token-client}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/{{api-version}}/private/debt/145657876-1?amount=19000&due-debt=12-05-2021",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{{api-version}}",
+						"private",
+						"debt",
+						"145657876-1"
+					],
+					"query": [
+						{
+							"key": "amount",
+							"value": "19000"
+						},
+						{
+							"key": "due-debt",
+							"value": "12-05-2021"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete debt",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token-client}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/{{api-version}}/private/debt/145657876-4",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{{api-version}}",
+						"private",
+						"debt",
+						"145657876-4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"postman.setEnvironmentVariable(\"token-client\",postman.getResponseHeader(\"Authorization\"));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"username\": \"Joan\",\r\n\t\"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/login",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -17,4 +17,13 @@ public class DebtMapper {
           entity.getIdDebt(),
           entity.getDueDate());
 
+  public final Function<Debt, DebtEntity> toEntity = debt ->
+      new DebtEntity(
+          debt.getIdClient(),
+          debt.getClientName(),
+          debt.getEmail(),
+          debt.getAmount(),
+          debt.getIdDebt(),
+          debt.getDueDate());
+
 }
